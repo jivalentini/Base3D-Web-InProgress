@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos — Base 3D</title>
+  <meta name="description" content="Catálogo completo de impresoras 3D, filamentos, repuestos, accesorios PC y decoración impresa en Base 3D Santa Fe." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237a22ff'/><text y='.9em' font-size='60' x='18' fill='white' font-family='sans-serif' font-weight='900'>B3</text></svg>" />
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">B3D</div>
+        <span class="logo-text">BASE 3D</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="nav-dropdown">
+          <a href="productos.html" class="active">
+            Productos
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#impresoras"><span class="dm-icon">🖨️</span>Impresoras</a></li>
+            <li><a href="#filamentos"><span class="dm-icon">🧵</span>Filamentos</a></li>
+            <li><a href="#repuestos"><span class="dm-icon">🔧</span>Repuestos</a></li>
+            <li><a href="#accesorios"><span class="dm-icon">💻</span>Accesorios PC</a></li>
+            <li><a href="#decoracion"><span class="dm-icon">🎨</span>Decoración</a></li>
+          </ul>
+        </li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="asistente.html">Asistente</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-trigger" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="nav-hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="asistente.html">Asistente Virtual</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <div class="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 Tu Carrito</h3>
+      <button class="cart-close">✕</button>
+    </div>
+    <div class="cart-body"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong>$0</strong></div>
+      <button class="btn-solid cart-checkout" style="width:100%"><span>Finalizar compra</span></button>
+    </div>
+  </aside>
+
+  <!-- ══ PRODUCT MODAL ════════════════════════════════════════ -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" aria-label="Cerrar">✕</button>
+      <div class="modal-body">
+        <div class="modal-image"><span id="modal-emoji">🖨️</span></div>
+        <div class="modal-info">
+          <div class="product-category" id="modal-cat">Categoría</div>
+          <h2 id="modal-name">Nombre del Producto</h2>
+          <p class="product-desc" id="modal-desc">Descripción del producto.</p>
+          <span class="modal-price-big" id="modal-price">$0</span>
+          <div class="modal-specs">
+            <h4>Especificaciones</h4>
+            <div id="modal-specs"></div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn-solid" id="modal-add-btn">
+              <span>Agregar al carrito</span>
+            </button>
+            <a href="contacto.html" class="btn-outline">
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE HERO ═══════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag">Catálogo 2025</span>
+      <h1 class="section-title" style="margin-top:16px">
+        Nuestros <span class="grad-text">Productos</span>
+      </h1>
+      <p style="color:var(--text-secondary);font-size:17px;line-height:1.75;max-width:580px;margin-top:16px">
+        Insumos de calidad, máquinas de última generación y objetos impresos a medida. Todo lo que necesitás para imprimir en 3D.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ FILTRO GLOBAL ════════════════════════════════════════ -->
+  <section style="padding:40px 0 0;background:var(--bg-dark);border-bottom:1px solid var(--border-subtle)">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="impresora">Impresoras</button>
+        <button class="filter-btn" data-filter="filamento">Filamentos</button>
+        <button class="filter-btn" data-filter="repuesto">Repuestos</button>
+        <button class="filter-btn" data-filter="accesorio">Accesorios PC</button>
+        <button class="filter-btn" data-filter="decoracion">Decoración</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       BLOQUE 1: MÁQUINAS E INSUMOS
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Separador visual -->
+      <div class="section-separator" style="display:flex;align-items:center;gap:20px;margin-bottom:60px">
+        <div style="flex:1;height:1px;background:var(--grad);opacity:0.4"></div>
+        <div style="font-family:var(--font-display);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)">Máquinas &amp; Insumos</div>
+        <div style="flex:1;height:1px;background:var(--grad);opacity:0.4"></div>
+      </div>
+
+      <!-- IMPRESORAS -->
+      <div class="products-block" id="impresoras">
+        <div class="products-block-header">
+          <div>
+            <span class="section-tag">🖨️ Impresoras</span>
+            <h2 class="section-title" style="margin-top:8px">Impresoras 3D</h2>
+            <p>FDM y resina para todos los niveles. Desde el maker hasta el profesional.</p>
+          </div>
+          <a href="contacto.html" class="btn-outline" style="flex-shrink:0"><span>Consultar stock</span></a>
+        </div>
+        <div class="products-grid">
+
+          <div class="product-card reveal" data-category="impresora" onclick='openModal({
+            id:"p001", emoji:"🖨️", category:"Impresoras FDM",
+            name:"Bambu Lab A1 Mini", price:"$580.000",rawPrice:580000,
+            desc:"Impresora FDM compacta de alta velocidad con sistema AMS Lite para multimaterial. Ideal para hogar y diseño.",
+            specs:[["Volumen","180 × 180 × 180 mm"],["Velocidad máx","500 mm/s"],["Filamento","1.75 mm"],["Conectividad","Wi-Fi / LAN"],["Peso","~7 kg"]]
+          })'>
+            <div class="product-image">
+              🖨️
+              <div class="product-image-glow"></div>
+              <span class="product-badge badge-hot">HOT</span>
+            </div>
+            <div class="product-info">
+              <div class="product-category">FDM · Bambu Lab</div>
+              <div class="product-name">Bambu Lab A1 Mini</div>
+              <div class="product-desc">Alta velocidad 500 mm/s, multimaterial AMS Lite incluido.</div>
+              <div class="product-footer">
+                <span class="product-price">$580.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"p001",name:"Bambu Lab A1 Mini",price:580000,emoji:"🖨️"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-1" data-category="impresora" onclick='openModal({
+            id:"p002", emoji:"🖨️", category:"Impresoras FDM",
+            name:"Creality Ender 3 V3 SE", price:"$185.000",rawPrice:185000,
+            desc:"La clásica Ender 3 completamente renovada. Auto-nivelación CR Touch y extrusor doble engranaje.",
+            specs:[["Volumen","220 × 220 × 250 mm"],["Velocidad","250 mm/s"],["Filamento","1.75 mm"],["Nivelación","CR Touch automático"]]
+          })'>
+            <div class="product-image">
+              🖨️
+              <div class="product-image-glow"></div>
+              <span class="product-badge badge-new">NEW</span>
+            </div>
+            <div class="product-info">
+              <div class="product-category">FDM · Creality</div>
+              <div class="product-name">Creality Ender 3 V3 SE</div>
+              <div class="product-desc">Perfecta para iniciarse. Auto-nivelación y extrusor mejorado.</div>
+              <div class="product-footer">
+                <span class="product-price">$185.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"p002",name:"Creality Ender 3 V3 SE",price:185000,emoji:"🖨️"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-2" data-category="impresora" onclick='openModal({
+            id:"p003", emoji:"🔮", category:"Impresoras Resina",
+            name:"Elegoo Saturn 4 Ultra", price:"$490.000",rawPrice:490000,
+            desc:"Impresora de resina MSLA 12K con pantalla monocromática de alta definición. Para profesionales exigentes.",
+            specs:[["Volumen","218 × 123 × 220 mm"],["Resolución","11520 × 6480 (12K)"],["Fuente de luz","COB LED"],["Velocidad","100 mm/h"]]
+          })'>
+            <div class="product-image">
+              🔮
+              <div class="product-image-glow"></div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Resina · Elegoo</div>
+              <div class="product-name">Elegoo Saturn 4 Ultra</div>
+              <div class="product-desc">Pantalla 12K para máximo detalle. Ideal para miniaturas y joyería.</div>
+              <div class="product-footer">
+                <span class="product-price">$490.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"p003",name:"Elegoo Saturn 4 Ultra",price:490000,emoji:"🔮"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-3" data-category="impresora" onclick='openModal({
+            id:"p004", emoji:"🏭", category:"Impresoras FDM",
+            name:"Bambu Lab X1-Carbon", price:"$1.150.000",rawPrice:1150000,
+            desc:"La referencia en impresión profesional. Sistema AMS para 16 materiales, cámara de alta velocidad y AI.",
+            specs:[["Volumen","256 × 256 × 256 mm"],["Velocidad máx","600 mm/s"],["Filamentos","Hasta 16 con AMS"],["Pantalla","Táctil 5 pulgadas"]]
+          })'>
+            <div class="product-image">
+              🏭
+              <div class="product-image-glow"></div>
+              <span class="product-badge badge-hot">PRO</span>
+            </div>
+            <div class="product-info">
+              <div class="product-category">FDM Professional · Bambu Lab</div>
+              <div class="product-name">Bambu Lab X1-Carbon</div>
+              <div class="product-desc">16 materiales, 600 mm/s, IA integrada. El tope de gama.</div>
+              <div class="product-footer">
+                <span class="product-price">$1.150.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"p004",name:"Bambu Lab X1-Carbon",price:1150000,emoji:"🏭"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FILAMENTOS -->
+      <div class="products-block" id="filamentos">
+        <div class="products-block-header">
+          <div>
+            <span class="section-tag">🧵 Filamentos</span>
+            <h2 class="section-title" style="margin-top:8px">Filamentos & Resinas</h2>
+            <p>Amplio stock de materiales para cualquier aplicación. Calidad garantizada.</p>
+          </div>
+          <a href="contacto.html" class="btn-outline" style="flex-shrink:0"><span>Pedir por mayor</span></a>
+        </div>
+        <div class="products-grid">
+
+          <div class="product-card reveal" data-category="filamento" onclick='openModal({
+            id:"f001", emoji:"🧵", category:"Filamentos PLA",
+            name:"PLA Premium 1kg — Negro", price:"$18.500",rawPrice:18500,
+            desc:"Filamento PLA de alta calidad, diámetro 1.75mm ±0.02mm. Impresión limpia, sin warping y con acabado suave.",
+            specs:[["Diámetro","1.75 mm ±0.02 mm"],["Peso neto","1 kg"],["Temp. impresión","190–220 °C"],["Temp. cama","25–60 °C"],["Tolerancia","±0.02 mm"]]
+          })'>
+            <div class="product-image">
+              🧵
+              <div class="product-image-glow"></div>
+              <span class="product-badge badge-sale">OFERTA</span>
+            </div>
+            <div class="product-info">
+              <div class="product-category">PLA · 1.75 mm · 1 kg</div>
+              <div class="product-name">PLA Premium — Negro Mate</div>
+              <div class="product-desc">Calidad premium, tolerancia ±0.02 mm. Colores vibrantes.</div>
+              <div class="product-footer">
+                <span class="product-price">$18.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"f001",name:"PLA Premium 1kg Negro",price:18500,emoji:"🧵"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-1" data-category="filamento" onclick='openModal({
+            id:"f002", emoji:"🟢", category:"Filamentos PETG",
+            name:"PETG 1kg — Transparente", price:"$22.000",rawPrice:22000,
+            desc:"PETG resistente y flexible, ideal para piezas funcionales que requieren durabilidad y cierta flexibilidad.",
+            specs:[["Diámetro","1.75 mm"],["Peso","1 kg"],["Temp. impresión","230–250 °C"],["Temp. cama","70–85 °C"]]
+          })'>
+            <div class="product-image">🟢<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">PETG · 1.75 mm · 1 kg</div>
+              <div class="product-name">PETG — Transparente</div>
+              <div class="product-desc">Alta resistencia mecánica y química. Para piezas funcionales.</div>
+              <div class="product-footer">
+                <span class="product-price">$22.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"f002",name:"PETG 1kg Transparente",price:22000,emoji:"🟢"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-2" data-category="filamento" onclick='openModal({
+            id:"f003", emoji:"🌊", category:"Filamentos TPU",
+            name:"TPU Flexible 95A — Azul", price:"$28.500",rawPrice:28500,
+            desc:"Filamento flexible TPU shore 95A. Para fundas, juntas, suela de zapatos y piezas que necesitan absorber impactos.",
+            specs:[["Dureza","Shore 95A"],["Diámetro","1.75 mm"],["Peso","500 g"],["Elongación",">400%"]]
+          })'>
+            <div class="product-image">🌊<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">TPU Flexible · 95A</div>
+              <div class="product-name">TPU Flexible 95A — Azul</div>
+              <div class="product-desc">Material flexible para fundas, juntas y piezas con impacto.</div>
+              <div class="product-footer">
+                <span class="product-price">$28.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"f003",name:"TPU Flexible 95A Azul",price:28500,emoji:"🌊"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-3" data-category="filamento" onclick='openModal({
+            id:"f004", emoji:"✨", category:"Filamentos Especiales",
+            name:"PLA Silk Dorado 1kg", price:"$26.000",rawPrice:26000,
+            desc:"Filamento PLA Silk con acabado brillante metalizado dorado. Perfecto para decoración y regalos.",
+            specs:[["Tipo","PLA Silk"],["Diámetro","1.75 mm"],["Peso","1 kg"],["Acabado","Brillante metalizado"]]
+          })'>
+            <div class="product-image">✨<div class="product-image-glow"></div><span class="product-badge badge-new">NUEVO</span></div>
+            <div class="product-info">
+              <div class="product-category">PLA Silk · Especial</div>
+              <div class="product-name">PLA Silk — Dorado</div>
+              <div class="product-desc">Acabado brillante metalizado. Ideal para decoración y regalos únicos.</div>
+              <div class="product-footer">
+                <span class="product-price">$26.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"f004",name:"PLA Silk Dorado 1kg",price:26000,emoji:"✨"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- REPUESTOS -->
+      <div class="products-block" id="repuestos">
+        <div class="products-block-header">
+          <div>
+            <span class="section-tag">🔧 Repuestos</span>
+            <h2 class="section-title" style="margin-top:8px">Repuestos & Partes</h2>
+            <p>Todo lo que necesitás para mantener tu impresora en perfectas condiciones.</p>
+          </div>
+        </div>
+        <div class="products-grid">
+
+          <div class="product-card reveal" data-category="repuesto" onclick='openModal({
+            id:"r001", emoji:"🔩", category:"Repuestos",
+            name:"Hotend Volcano E3D", price:"$12.500",rawPrice:12500,
+            desc:"Hotend Volcano de alta velocidad para Ender 3 y derivados. Compatible con múltiples materiales.",
+            specs:[["Modelo","E3D Volcano"],["Diámetro boquilla","0.4 mm"],["Temp. máx","300 °C"],["Compatibilidad","Ender 3 / CR-10"]]
+          })'>
+            <div class="product-image">🔩<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Hotend · E3D</div>
+              <div class="product-name">Hotend Volcano E3D</div>
+              <div class="product-desc">Alta temperatura y flujo. Compatible con Ender 3 y derivados.</div>
+              <div class="product-footer">
+                <span class="product-price">$12.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"r001",name:"Hotend Volcano E3D",price:12500,emoji:"🔩"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-1" data-category="repuesto" onclick='openModal({
+            id:"r002", emoji:"⚡", category:"Repuestos",
+            name:"Cama de Vidrio Boro 235mm", price:"$8.200",rawPrice:8200,
+            desc:"Cama de vidrio borosilicato de 235×235mm para Ender 3. Superficie perfectamente plana y resistente al calor.",
+            specs:[["Tamaño","235 × 235 mm"],["Material","Vidrio borosilicato"],["Grosor","4 mm"],["Compatibilidad","Ender 3 / V2 / V3"]]
+          })'>
+            <div class="product-image">⚡<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Cama · Borosilicato</div>
+              <div class="product-name">Cama Vidrio Boro 235 mm</div>
+              <div class="product-desc">Superficie plana y resistente para mejor adhesión del filamento.</div>
+              <div class="product-footer">
+                <span class="product-price">$8.200</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"r002",name:"Cama Vidrio Boro 235mm",price:8200,emoji:"⚡"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-2" data-category="repuesto" onclick='openModal({
+            id:"r003", emoji:"🔧", category:"Repuestos",
+            name:"Extrusor BMG Clone", price:"$9.500",rawPrice:9500,
+            desc:"Extrusor BMG dual drive clon de alta calidad. Mayor agarre del filamento y menor posibilidad de skip.",
+            specs:[["Tipo","Dual Drive BMG"],["Reducción","3:1"],["Peso","~75 g"],["Compatibilidad","Universal Bowden / Direct"]]
+          })'>
+            <div class="product-image">🔧<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Extrusor · BMG Clone</div>
+              <div class="product-name">Extrusor BMG Dual Drive</div>
+              <div class="product-desc">Mayor agarre, menos skip. Mejora inmediata de calidad de impresión.</div>
+              <div class="product-footer">
+                <span class="product-price">$9.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"r003",name:"Extrusor BMG Dual Drive",price:9500,emoji:"🔧"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       BLOQUE 2: PRODUCTOS IMPRESOS
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+
+      <div class="section-separator" style="display:flex;align-items:center;gap:20px;margin-bottom:60px">
+        <div style="flex:1;height:1px;background:var(--grad);opacity:0.4"></div>
+        <div style="font-family:var(--font-display);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)">Productos Impresos</div>
+        <div style="flex:1;height:1px;background:var(--grad);opacity:0.4"></div>
+      </div>
+
+      <!-- ACCESORIOS PC -->
+      <div class="products-block" id="accesorios">
+        <div class="products-block-header">
+          <div>
+            <span class="section-tag">💻 Accesorios PC</span>
+            <h2 class="section-title" style="margin-top:8px">Accesorios para PC & Gaming</h2>
+            <p>Organizadores, soportes y accesorios impresos en 3D para tu setup.</p>
+          </div>
+        </div>
+        <div class="products-grid">
+
+          <div class="product-card reveal" data-category="accesorio" onclick='openModal({
+            id:"a001", emoji:"🎧", category:"Accesorios PC",
+            name:"Soporte Auriculares Universal", price:"$5.500",rawPrice:5500,
+            desc:"Soporte impreso en PLA premium para colgar auriculares bajo el escritorio o en la pared. Diseño minimalista.",
+            specs:[["Material","PLA Premium"],["Instalación","Adhesivo o tornillo"],["Capacidad","Hasta 500 g"],["Color","Negro mate / A elección"]]
+          })'>
+            <div class="product-image">🎧<div class="product-image-glow"></div><span class="product-badge badge-hot">POPULAR</span></div>
+            <div class="product-info">
+              <div class="product-category">Accesorios · Gaming</div>
+              <div class="product-name">Soporte Auriculares</div>
+              <div class="product-desc">Diseño minimalista. Montaje bajo escritorio o en pared.</div>
+              <div class="product-footer">
+                <span class="product-price">$5.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"a001",name:"Soporte Auriculares",price:5500,emoji:"🎧"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-1" data-category="accesorio" onclick='openModal({
+            id:"a002", emoji:"📱", category:"Accesorios PC",
+            name:"Hub Organizador de Cables", price:"$4.200",rawPrice:4200,
+            desc:"Organizador de cables para escritorio con 6 ranuras. Mantén tu setup ordenado y sin cables sueltos.",
+            specs:[["Material","PETG"],["Ranuras","6 × diferentes tamaños"],["Montaje","Base adhesiva"],["Dimensiones","20 × 8 × 4 cm"]]
+          })'>
+            <div class="product-image">📱<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Accesorios · Escritorio</div>
+              <div class="product-name">Hub Organizador de Cables</div>
+              <div class="product-desc">6 ranuras. Mantené tu setup sin cables sueltos.</div>
+              <div class="product-footer">
+                <span class="product-price">$4.200</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"a002",name:"Hub Organizador Cables",price:4200,emoji:"📱"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-2" data-category="accesorio" onclick='openModal({
+            id:"a003", emoji:"🖥️", category:"Accesorios PC",
+            name:"Soporte Monitor Elevador", price:"$9.800",rawPrice:9800,
+            desc:"Elevador de monitor impreso en PETG resistente. Mejora la ergonomía y libera espacio en el escritorio.",
+            specs:[["Material","PETG reforzado"],["Altura","8 cm"],["Capacidad","Hasta 8 kg"],["Dimensiones","40 × 22 × 8 cm"]]
+          })'>
+            <div class="product-image">🖥️<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Accesorios · Ergonomía</div>
+              <div class="product-name">Elevador Monitor PETG</div>
+              <div class="product-desc">Mejora tu ergonomía y liberá espacio. Hasta 8 kg de carga.</div>
+              <div class="product-footer">
+                <span class="product-price">$9.800</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"a003",name:"Elevador Monitor PETG",price:9800,emoji:"🖥️"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-3" data-category="accesorio" onclick='openModal({
+            id:"a004", emoji:"🎮", category:"Accesorios PC",
+            name:"Soporte Control Gaming", price:"$3.800",rawPrice:3800,
+            desc:"Soporte de pared o escritorio para control de PS5, Xbox y genéricos. Diseño ajustado para cada modelo.",
+            specs:[["Material","PLA"],["Compatibilidad","PS5 / Xbox / Genérico"],["Montaje","Pared o escritorio"],["Color","Negro / Blanco"]]
+          })'>
+            <div class="product-image">🎮<div class="product-image-glow"></div><span class="product-badge badge-new">NEW</span></div>
+            <div class="product-info">
+              <div class="product-category">Accesorios · Gaming</div>
+              <div class="product-name">Soporte Control PS5/Xbox</div>
+              <div class="product-desc">Diseño específico para cada control. Pared o escritorio.</div>
+              <div class="product-footer">
+                <span class="product-price">$3.800</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"a004",name:"Soporte Control Gaming",price:3800,emoji:"🎮"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DECORACIÓN -->
+      <div class="products-block" id="decoracion">
+        <div class="products-block-header">
+          <div>
+            <span class="section-tag">🎨 Decoración</span>
+            <h2 class="section-title" style="margin-top:8px">Decoración & Arte Impreso</h2>
+            <p>Objetos únicos para el hogar. También hacemos pedidos personalizados.</p>
+          </div>
+          <a href="contacto.html" class="btn-outline" style="flex-shrink:0"><span>Pedir a medida</span></a>
+        </div>
+        <div class="products-grid">
+
+          <div class="product-card reveal" data-category="decoracion" onclick='openModal({
+            id:"d001", emoji:"🪴", category:"Decoración",
+            name:"Macetero Geométrico Diamond", price:"$6.500",rawPrice:6500,
+            desc:"Macetero con diseño geométrico diamante. Disponible en múltiples tamaños y colores. Ideal para suculentas.",
+            specs:[["Material","PLA"],["Tamaños","S (8cm) / M (12cm) / L (16cm)"],["Colores","A elección"],["Drenaje","Sí, incluye agujero"]]
+          })'>
+            <div class="product-image">🪴<div class="product-image-glow"></div><span class="product-badge badge-hot">POPULAR</span></div>
+            <div class="product-info">
+              <div class="product-category">Decoración · Jardín</div>
+              <div class="product-name">Macetero Geométrico Diamond</div>
+              <div class="product-desc">Diseño geométrico moderno. Varios tamaños y colores disponibles.</div>
+              <div class="product-footer">
+                <span class="product-price">$6.500</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"d001",name:"Macetero Geométrico Diamond",price:6500,emoji:"🪴"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-1" data-category="decoracion" onclick='openModal({
+            id:"d002", emoji:"💡", category:"Decoración",
+            name:"Lámpara Lunar — Luna Llena", price:"$18.000",rawPrice:18000,
+            desc:"Lámpara de escritorio con forma de luna. Impresión en PLA translúcido con LED interno cálido. Luz suave y difusa.",
+            specs:[["Material","PLA Translúcido"],["Diámetro","20 cm"],["LED","Cálido 3000K"],["Alimentación","USB 5V"]]
+          })'>
+            <div class="product-image">💡<div class="product-image-glow"></div><span class="product-badge badge-new">NUEVO</span></div>
+            <div class="product-info">
+              <div class="product-category">Decoración · Iluminación</div>
+              <div class="product-name">Lámpara Lunar — Luna Llena</div>
+              <div class="product-desc">PLA translúcido con LED cálido interno. Ambiente único para tu hogar.</div>
+              <div class="product-footer">
+                <span class="product-price">$18.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"d002",name:"Lámpara Lunar",price:18000,emoji:"💡"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-2" data-category="decoracion" onclick='openModal({
+            id:"d003", emoji:"🐲", category:"Decoración",
+            name:"Dragón Articulado Flexi", price:"$12.000",rawPrice:12000,
+            desc:"Dragón articulado impreso en una sola pieza. Totalmente flexible y articulado. Pintado a mano disponible.",
+            specs:[["Material","TPU / PLA"],["Longitud","~35 cm"],["Articulaciones","Totalmente flexible"],["Pintado","Opcional +$3.500"]]
+          })'>
+            <div class="product-image">🐲<div class="product-image-glow"></div></div>
+            <div class="product-info">
+              <div class="product-category">Decoración · Figuras</div>
+              <div class="product-name">Dragón Articulado Flexi</div>
+              <div class="product-desc">Impreso en una sola pieza. Totalmente articulado. Pintado opcional.</div>
+              <div class="product-footer">
+                <span class="product-price">$12.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"d003",name:"Dragón Articulado Flexi",price:12000,emoji:"🐲"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal reveal-delay-3" data-category="decoracion" onclick='openModal({
+            id:"d004", emoji:"🎁", category:"Decoración",
+            name:"Regalo Personalizado 3D", price:"$15.000",rawPrice:15000,
+            desc:"Diseñamos e imprimimos el regalo personalizado que necesitás. Cajas, figuras, llaveros, nombre en 3D y mucho más.",
+            specs:[["Material","PLA / PETG / TPU"],["Colores","A elección"],["Tamaño","A acordar"],["Tiempo","48–72 hs"]]
+          })'>
+            <div class="product-image">🎁<div class="product-image-glow"></div><span class="product-badge badge-hot">PEDIDO</span></div>
+            <div class="product-info">
+              <div class="product-category">Decoración · Personalizado</div>
+              <div class="product-name">Regalo Personalizado 3D</div>
+              <div class="product-desc">Lo diseñamos e imprimimos para vos. Consultá sin cargo.</div>
+              <div class="product-footer">
+                <span class="product-price">Desde $15.000</span>
+                <button class="product-add" onclick='event.stopPropagation();addToCart({id:"d004",name:"Regalo Personalizado 3D",price:15000,emoji:"🎁"})'>+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA CONTACTO ════════════════════════════════════════ -->
+  <section class="section" style="text-align:center">
+    <div class="container">
+      <span class="section-tag">¿No encontrás lo que buscás?</span>
+      <h2 class="section-title" style="margin:16px auto 20px;max-width:600px">Pedidos <span class="grad-text">personalizados</span> a medida</h2>
+      <p style="color:var(--text-secondary);max-width:500px;margin:0 auto 36px;font-size:16px;line-height:1.7">Contactanos con tu idea, archivo STL o referencia y te preparamos un presupuesto sin compromiso.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="contacto.html" class="btn-grad"><span>Solicitar Presupuesto</span></a>
+        <a href="asistente.html" class="btn-outline"><span>Hablar con el Asistente</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><div class="logo-badge">B3D</div><span class="logo-text">BASE 3D</span></a>
+          <p>Tecnología de impresión 3D de alta calidad en Santa Fe, Argentina.</p>
+          <div class="footer-social">
+            <a class="social-btn" href="#">📸</a>
+            <a class="social-btn" href="#">📘</a>
+            <a class="social-btn" href="#">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="#impresoras">Impresoras</a>
+          <a href="#filamentos">Filamentos</a>
+          <a href="#repuestos">Repuestos</a>
+          <a href="#accesorios">Accesorios PC</a>
+          <a href="#decoracion">Decoración</a>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="asistente.html">Asistente</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:info@base3d.com.ar">info@base3d.com.ar</a>
+          <a href="tel:+5493425000000">+54 9 342 500-0000</a>
+          <a href="#">Santa Fe, Argentina</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Base 3D. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

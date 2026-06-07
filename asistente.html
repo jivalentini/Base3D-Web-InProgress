@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asistente Virtual — Base 3D</title>
+  <meta name="description" content="Asistente virtual de Base 3D. Consultá sobre productos, precios y pedidos de impresión 3D." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237a22ff'/><text y='.9em' font-size='60' x='18' fill='white' font-family='sans-serif' font-weight='900'>B3</text></svg>" />
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">B3D</div>
+        <span class="logo-text">BASE 3D</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="nav-dropdown">
+          <a href="productos.html">
+            Productos
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="productos.html#impresoras"><span class="dm-icon">🖨️</span>Impresoras</a></li>
+            <li><a href="productos.html#filamentos"><span class="dm-icon">🧵</span>Filamentos</a></li>
+            <li><a href="productos.html#repuestos"><span class="dm-icon">🔧</span>Repuestos</a></li>
+            <li><a href="productos.html#accesorios"><span class="dm-icon">💻</span>Accesorios PC</a></li>
+            <li><a href="productos.html#decoracion"><span class="dm-icon">🎨</span>Decoración</a></li>
+          </ul>
+        </li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="asistente.html" class="active">Asistente</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-trigger" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="nav-hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="asistente.html">Asistente Virtual</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <div class="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 Tu Carrito</h3>
+      <button class="cart-close">✕</button>
+    </div>
+    <div class="cart-body"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong>$0</strong></div>
+      <button class="btn-solid cart-checkout" style="width:100%"><span>Finalizar compra</span></button>
+    </div>
+  </aside>
+
+  <!-- ══ CHAT INTERFACE ══════════════════════════════════════ -->
+  <div class="chat-page">
+    <div class="chat-container">
+
+      <!-- Chat Header -->
+      <div class="chat-header-bar">
+        <div class="chat-bot-avatar">B3D</div>
+        <div class="chat-bot-info">
+          <div class="chat-bot-name">Asistente Base 3D</div>
+          <div class="chat-bot-status">En línea — responde al instante</div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <a href="contacto.html" class="btn-outline" style="padding:8px 18px;font-size:13px">
+            <span>Contacto humano</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="chat-messages">
+
+        <!-- Bienvenida automática -->
+        <div class="msg bot">
+          <div class="msg-avatar">B3D</div>
+          <div>
+            <div class="msg-bubble">
+              👋 ¡Hola! Soy el asistente virtual de <strong>Base 3D</strong>. Estoy aquí para ayudarte con consultas sobre impresoras, filamentos, precios, envíos y pedidos personalizados.<br><br>¿En qué puedo ayudarte hoy?
+            </div>
+            <div class="msg-time">Ahora</div>
+          </div>
+        </div>
+
+        <!-- Quick replies iniciales -->
+        <div class="chat-quick-replies" id="quick-replies">
+          <button class="quick-reply">🖨️ Ver impresoras</button>
+          <button class="quick-reply">🧵 Tipos de filamento</button>
+          <button class="quick-reply">💰 Precios y presupuesto</button>
+          <button class="quick-reply">📦 Envíos y envíos</button>
+          <button class="quick-reply">💳 Medios de pago</button>
+          <button class="quick-reply">🔧 Tengo un repuesto roto</button>
+        </div>
+
+      </div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <div class="chat-input-row">
+          <textarea
+            class="chat-input"
+            id="chat-input"
+            placeholder="Escribí tu consulta aquí… (Enter para enviar)"
+            rows="1"
+          ></textarea>
+          <button class="chat-send" id="chat-send" aria-label="Enviar mensaje">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+        <p style="font-size:11px;color:var(--text-dim);margin-top:10px;font-family:var(--font-mono);text-align:center">
+          Asistente automático · Para atención personalizada <a href="contacto.html" style="color:var(--accent-blue)">contactanos aquí</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

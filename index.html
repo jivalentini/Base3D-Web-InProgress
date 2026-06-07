@@ -1,408 +1,275 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Base 3D — Impresión 3D desde Santa Fe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="#inicio" class="brand">
-          <span class="brand-mark">B3D</span>
-          <span class="brand-text">Base 3D</span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base 3D — Impresión 3D en Santa Fe</title>
+  <meta name="description" content="Base 3D: impresoras, filamentos, repuestos y servicios de impresión 3D en Santa Fe, Argentina." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237a22ff'/><text y='.9em' font-size='60' x='18' fill='white' font-family='sans-serif' font-weight='900'>B3</text></svg>" />
+</head>
+<body>
 
-        <nav class="main-nav" aria-label="Navegación principal">
-          <a href="#inicio">Inicio</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#productos">Productos</a>
-          <a href="#asistente">Asistente</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <!-- Logo LEFT -->
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">B3D</div>
+        <span class="logo-text">BASE 3D</span>
+      </a>
 
-        <button class="cart-button" id="cartToggle" aria-label="Carrito de compras">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 6h15l-1.5 9h-12z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
-            <circle cx="9" cy="20" r="1.5" fill="currentColor" />
-            <circle cx="18" cy="20" r="1.5" fill="currentColor" />
-            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+      <!-- Links CENTER -->
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="nav-dropdown">
+          <a href="productos.html">
+            Productos
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="productos.html#impresoras"><span class="dm-icon">🖨️</span>Impresoras</a></li>
+            <li><a href="productos.html#filamentos"><span class="dm-icon">🧵</span>Filamentos</a></li>
+            <li><a href="productos.html#repuestos"><span class="dm-icon">🔧</span>Repuestos</a></li>
+            <li><a href="productos.html#accesorios"><span class="dm-icon">💻</span>Accesorios PC</a></li>
+            <li><a href="productos.html#decoracion"><span class="dm-icon">🎨</span>Decoración</a></li>
+          </ul>
+        </li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="asistente.html">Asistente</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+
+      <!-- Actions RIGHT -->
+      <div class="nav-actions">
+        <button class="cart-trigger" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
           </svg>
-          <span class="cart-badge" id="cartCount">0</span>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="nav-hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
         </button>
       </div>
-    </header>
+    </div>
+  </nav>
 
-    <main>
-      <section id="inicio" class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">Manufactura Aditiva</span>
-            <h1>Base 3D: impulsamos ideas con impresión 3D premium desde Santa Fe.</h1>
-            <p>Diseño, prototipado y producción de piezas técnicas con acabado profesional. Tu visión se convierte en objeto real con precisión y estilo tecnológico.</p>
-            <div class="hero-actions">
-              <a href="#nosotros" class="btn btn-primary">Conocer más</a>
-              <a href="#contacto" class="text-link">Escribir ahora</a>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <div class="hero-card">
-              <span class="tag-highlight">Desde Santa Fe</span>
-              <h2>Producción local con alcance digital</h2>
-              <p>Proyectos a medida, piezas funcionales y asesoramiento experto en manufactura aditiva y postprocesado.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- Mobile nav -->
+  <div class="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="asistente.html">Asistente Virtual</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
 
-      <section id="nosotros" class="about-section">
-        <div class="container about-container">
-          <div class="about-header">
-            <span class="eyebrow">Quién soy</span>
-            <h2>Apasionado por la impresión 3D y la transformación de ideas en piezas reales.</h2>
-            <p>En Base 3D combino tecnología, diseño y materiales de alta calidad para acompañar emprendedores, makers e ingenieros en cada etapa del proyecto. Desde Santa Fe, ofrezco soluciones directas y personalizadas que cuidan el detalle, la funcionalidad y el acabado final.</p>
-          </div>
-          <div class="about-cards">
-            <article class="value-card">
-              <div class="value-card-icon">🔧</div>
-              <h3>Pasión técnica</h3>
-              <p>Más de 5 años en manufactura aditiva, con especial foco en piezas robustas y prototipos de alto valor.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-card-icon">🤝</div>
-              <h3>Trabajo colaborativo</h3>
-              <p>Asesoramiento desde la idea hasta la entrega, con comunicación clara y tiempos ágiles.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-card-icon">✨</div>
-              <h3>Acabados Premium</h3>
-              <p>Postprocesado profesional: pintura, pulido y tratamientos especiales para resultados de alta calidad.</p>
-            </article>
-            <article class="value-card">
-              <div class="value-card-icon">⚡</div>
-              <h3>Entrega Ágil</h3>
-              <p>Producción local desde Santa Fe con tiempos rápidos sin comprometer la precisión ni el detalle.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="productos" class="products-section">
-        <div class="container section-panel">
-          <div class="section-header">
-            <div>
-              <span class="eyebrow">Productos</span>
-              <h2>Catálogo completo de máquinas, insumos y creaciones Base 3D.</h2>
-            </div>
-            <p class="section-copy">Máquinas e insumos para tus impresoras, junto con piezas impresas listas para usar que combinan estética, funcionalidad y diseño tecnológico.</p>
-          </div>
-
-          <div class="category-block">
-            <div class="category-header">
-              <h3 class="category-title">Máquinas e Insumos</h3>
-            </div>
-            <div class="product-grid">
-              <article class="product-card" data-id="ender3v3">
-                <img src="https://images.unsplash.com/photo-1587825140708-787e0d3e6d1f?auto=format&fit=crop&w=800&q=80" alt="Impresora Creality Ender 3 V3" />
-                <h3>Impresora Creality Ender 3 V3</h3>
-                <p class="product-description">Impresora FDM confiable con nivelación automática y estructura resistente para proyectos continuos.</p>
-                <div class="product-footer">
-                  <span class="product-price">$289.990</span>
-                  <span class="product-stock">Stock: 9</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="filamentopla-negro">
-                <img src="https://images.unsplash.com/photo-1593642532400-2682a8a8fda7?auto=format&fit=crop&w=800&q=80" alt="Filamento PLA Grilon3 Negro" />
-                <h3>Rollo Filamento PLA Grilon3 (Negro)</h3>
-                <p class="product-description">Filamento PLA de alta definición con acabado mate y excelente adhesión entre capas.</p>
-                <div class="product-footer">
-                  <span class="product-price">$34.500</span>
-                  <span class="product-stock">Stock: 18</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="filamentopetg-cristal">
-                <img src="https://images.unsplash.com/photo-1622320914950-1349b4e0a914?auto=format&fit=crop&w=800&q=80" alt="Filamento PETG Cristal" />
-                <h3>Rollo Filamento PETG (Cristal)</h3>
-                <p class="product-description">PETG transparente de alta resistencia ideal para piezas funcionales y prototipos visibles.</p>
-                <div class="product-footer">
-                  <span class="product-price">$38.900</span>
-                  <span class="product-stock">Stock: 12</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-            </div>
-          </div>
-
-          <div class="category-block">
-            <div class="category-header">
-              <h3 class="category-title">Productos Impresos (Base 3D Creations)</h3>
-            </div>
-            <div class="product-grid">
-              <article class="product-card" data-id="soporte-auriculares">
-                <img src="https://images.unsplash.com/photo-1611085583191-a0033a1eb923?auto=format&fit=crop&w=800&q=80" alt="Soporte de Auriculares para Escritorio" />
-                <h3>Soporte de Auriculares para Escritorio</h3>
-                <p class="product-description">Diseño geométrico elegante y estable para mantener tu setup organizado.</p>
-                <div class="product-footer">
-                  <span class="product-price">$6.990</span>
-                  <span class="product-stock">Stock: 24</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="pasacables-set">
-                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80" alt="Organizador Pasacables Set x4" />
-                <h3>Organizador/Pasacables de mesa (Set x4)</h3>
-                <p class="product-description">Set de pasacables con acabado minimalista para mantener tu escritorio limpio.</p>
-                <div class="product-footer">
-                  <span class="product-price">$5.490</span>
-                  <span class="product-stock">Stock: 30</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="sujetacables-magnetico">
-                <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80" alt="Sujetacables magnético" />
-                <h3>Sujetacables magnético para setup gamer</h3>
-                <p class="product-description">Clip magnético con soporte modular para mantener todos tus cables en su lugar.</p>
-                <div class="product-footer">
-                  <span class="product-price">$3.990</span>
-                  <span class="product-stock">Stock: 20</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="soporte-notebook">
-                <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=80" alt="Soporte Vertical para Notebook" />
-                <h3>Soporte Vertical para Notebook</h3>
-                <p class="product-description">Base vertical para liberar espacio y mejorar el flujo de aire de tu portátil.</p>
-                <div class="product-footer">
-                  <span class="product-price">$8.250</span>
-                  <span class="product-stock">Stock: 14</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="llavero-trex">
-                <img src="https://images.unsplash.com/photo-1590080876384-c1fba39a0ce8?auto=format&fit=crop&w=800&q=80" alt="Llavero articulado T-Rex" />
-                <h3>Llavero articulado de T-Rex</h3>
-                <p class="product-description">Llavero con diseño articulado inspirado en dinosaurios para un toque fun en tu llavero.</p>
-                <div class="product-footer">
-                  <span class="product-price">$2.490</span>
-                  <span class="product-stock">Stock: 42</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="llavero-personalizado">
-                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80" alt="Llavero logo personalizado" />
-                <h3>Llavero personalizado con logo</h3>
-                <p class="product-description">Llavero exclusivo con logo personalizado, ideal para regalos corporativos o branding.</p>
-                <div class="product-footer">
-                  <span class="product-price">$3.790</span>
-                  <span class="product-stock">Stock: 28</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="maceta-nordica">
-                <img src="https://images.unsplash.com/photo-1578500494198-246f612d03b3?auto=format&fit=crop&w=800&q=80" alt="Maceta geométrica estilo nórdico" />
-                <h3>Maceta geométrica estilo nórdico</h3>
-                <p class="product-description">Maceta low poly para interiores con un estilo moderno y acabado natural mate.</p>
-                <div class="product-footer">
-                  <span class="product-price">$7.450</span>
-                  <span class="product-stock">Stock: 16</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="soporte-telefono">
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Soporte articulado para teléfono" />
-                <h3>Soporte articulado para Teléfono/Tablet</h3>
-                <p class="product-description">Soporte ajustable con giro flexible para ver contenido sin ocupar espacio en tu escritorio.</p>
-                <div class="product-footer">
-                  <span class="product-price">$5.990</span>
-                  <span class="product-stock">Stock: 18</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="stand-joystick">
-                <img src="https://images.unsplash.com/photo-1586227235346-c8950277d2ca?auto=format&fit=crop&w=800&q=80" alt="Stand para Joystick" />
-                <h3>Stand para Joystick de PS5 / Xbox</h3>
-                <p class="product-description">Stand minimalista con soporte seguro para tus controles gamer favoritos.</p>
-                <div class="product-footer">
-                  <span class="product-price">$6.250</span>
-                  <span class="product-stock">Stock: 22</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-
-              <article class="product-card" data-id="caja-hexagonal">
-                <img src="https://images.unsplash.com/photo-1617395362961-015e3a2b8b2a?auto=format&fit=crop&w=800&q=80" alt="Caja organizadora hexagonal" />
-                <h3>Caja organizadora con encastre hexagonal</h3>
-                <p class="product-description">Caja modular con encastres para ordenar talleres, cables y pequeños componentes.</p>
-                <div class="product-footer">
-                  <span class="product-price">$9.150</span>
-                  <span class="product-stock">Stock: 14</span>
-                </div>
-                <button class="btn btn-card" data-action="view-details">Ver detalles</button>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="asistente" class="assistant-section">
-        <div class="container assistant-grid">
-          <div class="assistant-copy">
-            <span class="eyebrow">Asistente Base 3D</span>
-            <h2>Chat interactivo para asesorarte en tu proyecto de impresión 3D.</h2>
-            <p>Simulá una charla con nuestro bot experto. Escribí tu consulta y obtené respuestas rápidas sobre diseño, archivos STL y pasos para avanzar.</p>
-          </div>
-
-          <div class="chat-panel">
-            <div class="chat-header">
-              <div class="chat-avatar">B3D</div>
-              <div>
-                <p class="chat-title">Base 3D Bot</p>
-                <p class="chat-status">En línea</p>
-              </div>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-              <div class="message bot">
-                <p>¡Hola! Soy el Asistente Base 3D. Contame qué querés imprimir o cómo puedo ayudarte.</p>
-              </div>
-            </div>
-
-            <form id="chatForm" class="chat-input-area">
-              <input id="chatInput" class="chat-input" type="text" placeholder="Escribí tu consulta aquí..." autocomplete="off" />
-              <button type="submit" class="btn btn-primary chat-send-btn">Enviar</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" class="contact-section">
-        <div class="container contact-layout">
-          <div class="contact-copy">
-            <span class="eyebrow">Contacto</span>
-            <h2>Hablemos de tu próximo proyecto 3D</h2>
-            <p>Escribime para recibir asesoramiento rápido, cotizaciones y propuestas técnicas que se adapten a tu idea.</p>
-            <div class="social-links">
-              <a href="#" class="social-pill">Instagram</a>
-              <a href="#" class="social-pill">WhatsApp</a>
-              <a href="#" class="social-pill">GitHub</a>
-            </div>
-          </div>
-          <form class="contact-form">
-            <label>
-              <span>Nombre</span>
-              <input type="text" placeholder="Tu nombre" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" placeholder="tu@correo.com" />
-            </label>
-            <label>
-              <span>Mensaje</span>
-              <textarea rows="6" placeholder="Contame sobre tu proyecto..."></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <aside class="cart-sidebar" id="cartSidebar">
-      <div class="cart-panel">
-        <div class="cart-header">
-          <div>
-            <span class="eyebrow">Tu carrito</span>
-            <h3>Resumen de compra</h3>
-          </div>
-          <button class="cart-close-btn" id="cartClose" aria-label="Cerrar carrito">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-            </svg>
-          </button>
-        </div>
-        <span class="cart-summary-count" id="sidebarCount">0 productos</span>
-
-        <div class="cart-items" id="cartItems">
-          <p class="cart-empty">Aún no agregaste productos.</p>
-        </div>
-
-        <div class="cart-footer">
-          <div class="cart-total-row">
-            <span>Total</span>
-            <strong id="cartTotal">$0</strong>
-          </div>
-          <button class="btn btn-primary cart-checkout-btn" id="checkoutBtn">Finalizar Compra</button>
-        </div>
-
-        <div class="cart-confirmation" id="cartConfirmation" hidden>
-          <p>Compra confirmada. Gracias por elegir Base 3D. Te contactamos en breve.</p>
-        </div>
+  <!-- ══ CART SIDEBAR ════════════════════════════════════════ -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 Tu Carrito</h3>
+      <button class="cart-close">✕</button>
+    </div>
+    <div class="cart-body">
+      <div class="cart-empty">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <p>Tu carrito está vacío</p>
       </div>
-    </aside>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong>$0</strong>
+      </div>
+      <button class="btn-solid cart-checkout" style="width:100%">
+        <span>Finalizar compra</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </aside>
 
-    <div class="cart-overlay" id="cartOverlay"></div>
+  <!-- ══ HERO ════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-bg-glow g1"></div>
+      <div class="hero-bg-glow g2"></div>
+      <div class="hero-bg-glow g3"></div>
+    </div>
 
-    <div class="product-modal" id="productModal">
-      <div class="modal-content">
-        <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </svg>
-        </button>
-        
-        <div class="modal-grid">
-          <div class="modal-images">
-            <img id="modalMainImage" src="" alt="Producto" class="modal-main-image" />
-            <div class="modal-thumbnails" id="modalThumbnails"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>Impresión 3D · Santa Fe, Argentina</span>
+        </div>
+
+        <h1 class="hero-title">
+          El Futuro<br>
+          <span class="grad-text">Se Imprime</span><br>
+          Hoy.
+        </h1>
+
+        <p class="hero-subtitle">
+          Tecnología de impresión 3D de última generación al alcance de todos.
+          Impresoras, filamentos, repuestos y objetos impresos a medida para tu proyecto.
+        </p>
+
+        <div class="hero-actions">
+          <a href="productos.html" class="btn-grad">
+            <span>Ver Productos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#servicios" class="btn-outline">
+            <span>Conocé más</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">+500</span>
+            <span class="hero-stat-label">Proyectos</span>
           </div>
-          
-          <div class="modal-info">
-            <span class="eyebrow">Detalles del Producto</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDescription" class="modal-description"></p>
-            
-            <div class="modal-specs">
-              <h4>Especificaciones técnicas</h4>
-              <ul id="modalSpecs" class="specs-list"></ul>
-            </div>
-            
-            <div class="modal-pricing">
-              <span class="product-price" id="modalPrice"></span>
-              <span class="product-stock" id="modalStock"></span>
-            </div>
-            
-            <button class="btn btn-primary" id="modalAddCart" style="width: 100%;">Agregar al carrito</button>
+          <div class="hero-stat">
+            <span class="hero-stat-num">3+</span>
+            <span class="hero-stat-label">Años activos</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">24h</span>
+            <span class="hero-stat-label">Soporte</span>
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>Base 3D • Impresión 3D profesional desde Santa Fe.</p>
-        <div class="footer-links">
-          <a href="#inicio">Inicio</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
+    <!-- Decorative visual -->
+    <div class="hero-visual">
+      <div class="hero-3d-shape">
+        <div class="hero-ring r1"></div>
+        <div class="hero-ring r2"></div>
+        <div class="hero-ring r3"></div>
+        <div class="hero-center-icon">△</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICIOS ═══════════════════════════════════════════ -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">¿Qué hacemos?</span>
+        <h2 class="section-title">Soluciones de <span class="grad-text">Impresión 3D</span> para cada necesidad</h2>
+        <p>Desde prototipos industriales hasta decoraciones únicas, en Base 3D convertimos tus ideas en objetos reales con la mejor tecnología disponible.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🖨️</div>
+          <h3>Impresoras & Equipos</h3>
+          <p>Vendemos y asesoramos sobre impresoras FDM y de resina de las mejores marcas. Equipos para hogar, estudio y producción industrial.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">🧵</div>
+          <h3>Filamentos & Resinas</h3>
+          <p>Amplio stock de filamentos PLA, PETG, TPU, ABS y especiales. Resinas de alta precisión para impresoras SLA y MSLA.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">⚙️</div>
+          <h3>Impresión a Pedido</h3>
+          <p>Envianos tu archivo STL o contanos tu idea y lo imprimimos. Servicio rápido, acabado profesional, entrega en todo el país.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">🔧</div>
+          <h3>Mantenimiento & Repuestos</h3>
+          <p>Extrusores, hotends, camas, correas y más. Reparamos y calibramos cualquier impresora 3D para que vuelva a funcionar perfecto.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">💻</div>
+          <h3>Accesorios PC & Gaming</h3>
+          <p>Organizadores de cables, soportes para monitores, holders para auriculares y todo tipo de accesorios impresos a medida.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">🎨</div>
+          <h3>Decoración & Arte</h3>
+          <p>Lámparas, maceteros, figuras, esculturas y objetos artísticos únicos. Pedidos personalizados para regalo o decoración del hogar.</p>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="app.js"></script>
-  </body>
+  <div class="divider"></div>
+
+  <!-- ══ CTA BAND ════════════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container" style="text-align:center">
+      <span class="section-tag">Asistente Virtual</span>
+      <h2 class="section-title" style="margin:16px auto 20px;max-width:600px">
+        ¿Tenés dudas? Nuestro <span class="grad-text">AI</span> te responde al instante
+      </h2>
+      <p style="color:var(--text-secondary);max-width:500px;margin:0 auto 36px;font-size:16px;line-height:1.7">
+        Preguntá sobre productos, precios, envíos o pedidos personalizados. Disponible las 24 horas.
+      </p>
+      <a href="asistente.html" class="btn-grad">
+        <span>Hablar con el Asistente</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:0">
+            <div class="logo-badge">B3D</div>
+            <span class="logo-text">BASE 3D</span>
+          </a>
+          <p>Tecnología de impresión 3D de alta calidad en Santa Fe, Argentina. Innovamos para que tu proyecto cobre vida.</p>
+          <div class="footer-social">
+            <a class="social-btn" href="#" aria-label="Instagram">📸</a>
+            <a class="social-btn" href="#" aria-label="Facebook">📘</a>
+            <a class="social-btn" href="#" aria-label="WhatsApp">💬</a>
+            <a class="social-btn" href="#" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="productos.html#impresoras">Impresoras</a>
+          <a href="productos.html#filamentos">Filamentos</a>
+          <a href="productos.html#repuestos">Repuestos</a>
+          <a href="productos.html#accesorios">Accesorios PC</a>
+          <a href="productos.html#decoracion">Decoración</a>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="asistente.html">Asistente Virtual</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:info@base3d.com.ar">info@base3d.com.ar</a>
+          <a href="tel:+5493425000000">+54 9 342 500-0000</a>
+          <a href="#">Santa Fe, Argentina</a>
+          <a href="#">Lun–Vie 9–18h</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Base 3D. Todos los derechos reservados.</span>
+        <div style="display:flex;gap:24px">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
 </html>
